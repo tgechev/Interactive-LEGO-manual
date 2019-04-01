@@ -130,6 +130,11 @@ cv::Mat Camera::getFrame() {
 			camFrame = cv::Mat(height, width, CV_8UC3, pMem, cv::Mat::AUTO_STEP);
 			videoFrame = camFrame.clone();
 		}
+
+		nRet = is_FreeImageMem(hCam, pMem, memID);
+		if (nRet != IS_SUCCESS) {
+			std::cout << "Unable to free image memory." << std::endl;
+		}
 	}
 
 	myMutex.unlock();
@@ -144,10 +149,6 @@ Camera::Camera(UINT _devID) {
 		hCam = 0;
 	}
 }
-
-/*cv::VideoCapture Camera::getStream() {
-	return camStream;
-}*/
 
 void Camera::Close() {
 	if (camStream.isOpened()) {

@@ -27,7 +27,6 @@ public:
 	void Initialize();
 	void SetROI(INT _X, INT _Y, INT _roiWidth, INT _roiHeight);
 	cv::Mat getFrame();
-	//cv::VideoCapture getStream();
 	void Close();
 };
 #endif
