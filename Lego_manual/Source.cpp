@@ -9,6 +9,8 @@ int main() {
 
 	cam->Initialize();
 
+	cam->SetROI(0, 0, 1152, 964);
+
 	Mat camFrame;
 
 	namedWindow("Feed", WINDOW_NORMAL);
@@ -16,6 +18,8 @@ int main() {
 	while (true) {
 
 		camFrame = cam->getFrame();
+
+		flip(camFrame, camFrame, -1);
 
 		imshow("Feed", camFrame);
 

@@ -77,6 +77,29 @@ void Camera::Initialize() {
 	}
 }
 
+void Camera::SetROI(INT _X, INT _Y, INT _roiWidth, INT _roiHeight) {
+
+	width = _roiWidth;
+
+	height = _roiHeight;
+	
+	IS_RECT rectAOI;
+
+	rectAOI.s32X = _X;
+
+	rectAOI.s32Y = _Y;
+
+	rectAOI.s32Width = _roiWidth;
+
+	rectAOI.s32Height = _roiHeight;
+
+	INT nRet = is_AOI(hCam, IS_AOI_IMAGE_SET_AOI, (void*)&rectAOI, sizeof(rectAOI));
+
+	if (nRet != IS_SUCCESS) {
+		std::cout << "Unable to set ROI." << std::endl;
+	}
+}
+
 cv::Mat Camera::getFrame() {
 	cv::Mat camFrame, videoFrame;
 	INT nRet;

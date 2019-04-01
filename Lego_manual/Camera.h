@@ -19,11 +19,13 @@ private:
 	char* pMem = NULL;
 	int memID = 0;
 
-	const int width = 1280;
-	const int height = 1024;
+	int width;
+	int height;
+
 public:
 	Camera(UINT _devID);
 	void Initialize();
+	void SetROI(INT _X, INT _Y, INT _roiWidth, INT _roiHeight);
 	cv::Mat getFrame();
 	//cv::VideoCapture getStream();
 	void Close();
