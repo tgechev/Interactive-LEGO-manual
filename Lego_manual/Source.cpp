@@ -51,6 +51,10 @@ int main() {
 
 	Mat camFrame, frame_HSV, frame_threshold;
 
+	Mat canny_output,gray;
+	vector<vector<Point> > contours;
+	vector<Vec4i> hierarchy;
+
 	namedWindow(window_capture_name, WINDOW_NORMAL);
 	namedWindow(window_detection_name, WINDOW_NORMAL);
 
@@ -86,6 +90,11 @@ int main() {
 		// Show the frames
 		imshow(window_capture_name, camFrame);
 		imshow(window_detection_name, frame_threshold);
+
+
+		//Canny(gray, canny_output, 50, 150, 3);
+		//findContours(canny_output, contours, hierarchy, RETR_TREE, CHAIN_APPROX_SIMPLE, Point(0, 0));
+		
 
 
 		if (waitKey(30) >= 0)
